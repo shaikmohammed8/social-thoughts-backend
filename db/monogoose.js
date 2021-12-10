@@ -9,5 +9,6 @@ mongoose.connect(process.env.databaseUrl, {
 }).then(() => {
     console.log('every thing is fine');
 }).catch((err) => {
+    console.log("asdfasdfasdf" + process.env.databaseUrl);
     console.log(err);
 });
