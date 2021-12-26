@@ -30,6 +30,17 @@ router.get('/user', async (req, res) => {
 
 
         }
+        else users = await User.find((error, users) => {
+            if (users) {
+                var usersFiltred = users.filter((value, index, users) => {
+                    return value._id.toString() != req.user._id.toString();
+                })
+                return res.status(200).send(usersFiltred);
+            }
+            if (error) {
+                throw Error(error)
+            }
+        })
 
     } catch (error) {
         res.status(400).send({ error: `${error.message}` });
